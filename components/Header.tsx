@@ -34,8 +34,8 @@ export default function Header() {
                         <Link
                             href={'/earn-crypto'}
                             data-active={isActive("/earn-crypto")}
-                            className="
-                                opacity-80 hover:opacity-100 cursor-pointer
+                            className="hidden
+                                hover:opacity-100
                                 data-[active=true]:text-lime-400
                                 data-[active=true]:opacity-100
                             "
@@ -45,8 +45,8 @@ export default function Header() {
                         <Link
                             href={'/claim-multiply'}
                             data-active={isActive("/claim-multiply")}
-                            className="
-                                opacity-80 hover:opacity-100 cursor-pointer
+                            className="hidden
+                                hover:opacity-100
                                 data-[active=true]:text-lime-400
                                 data-[active=true]:opacity-100
                             "
@@ -56,8 +56,8 @@ export default function Header() {
                         <Link
                             href={'/passive-income'}
                             data-active={isActive("/passive-income")}
-                            className="
-                                opacity-80 hover:opacity-100 cursor-pointer
+                            className="hidden
+                                hover:opacity-100
                                 data-[active=true]:text-lime-400
                                 data-[active=true]:opacity-100
                             "
@@ -67,8 +67,8 @@ export default function Header() {
                         <Link
                             href={'/play-earn'}
                             data-active={isActive("/play-earn")}
-                            className="
-                                opacity-80 hover:opacity-100 cursor-pointer
+                            className="hidden
+                                hover:opacity-100
                                 data-[active=true]:text-lime-400
                                 data-[active=true]:opacity-100
                             "
@@ -78,8 +78,8 @@ export default function Header() {
                         <Link
                             href={'/money-making-apps'}
                             data-active={isActive("/money-making-apps")}
-                            className="
-                                opacity-80 hover:opacity-100 cursor-pointer
+                            className="hidden
+                                hover:opacity-100
                                 data-[active=true]:text-lime-400
                                 data-[active=true]:opacity-100
                             "
@@ -89,8 +89,8 @@ export default function Header() {
                         <Link
                             href={'/casinos'}
                             data-active={isActive("/casinos")}
-                            className="
-                                opacity-80 hover:opacity-100 cursor-pointer
+                            className="hidden
+                                hover:opacity-100
                                 data-[active=true]:text-lime-400
                                 data-[active=true]:opacity-100
                             "
