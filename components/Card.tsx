@@ -11,11 +11,10 @@ export interface CardProps {
   badges: string[]
   highlight: string
   features: string[]
-  cta: string
   link: string
 }
 
-const Card = ({name, logo, headline, category, badges, highlight, features, cta, link}: CardProps) => {
+const Card = ({name, logo, headline, category, badges, highlight, features, link}: CardProps) => {
     const [open, setOpen] = useState(false)
     const [modalData, setModalData] = useState<CardProps | null>(null);
 
@@ -82,7 +81,7 @@ const Card = ({name, logo, headline, category, badges, highlight, features, cta,
                 <div className="flex items-center gap-3 mt-6">
                     <button 
                         onClick={() => {
-                            setModalData({ name, logo, headline, category, badges, highlight, features, cta, link });
+                            setModalData({ name, logo, headline, category, badges, highlight, features, link });
                             setOpen(true);
                         }} 
                         className="bg-neutral-100 px-5 py-2 rounded-lg text-sm font-medium flex items-center justify-center cursor-pointer"

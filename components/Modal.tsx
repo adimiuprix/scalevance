@@ -93,11 +93,12 @@ const Modal = ({ open, data, onClose }: ModalProps) => {
                             </span>
                         </div>
                     </div>
+
                     {/* ACTIONS */}
                     <div className="flex items-center gap-3">
                         <button
                             onClick={onClose}
-                            className="flex-1 bg-neutral-200 text-black py-2 rounded-xl font-semibold flex items-center justify-center gap-2"
+                            className="cursor-pointer flex-1 bg-neutral-200 text-black py-2 rounded-xl font-semibold flex items-center justify-center gap-2"
                         >
                             <svg
                                 className="w-3 h-3 fill-black"
@@ -108,7 +109,7 @@ const Modal = ({ open, data, onClose }: ModalProps) => {
                             </svg>
                             <span>Close</span>
                         </button>
-                        <button className="flex-1 bg-black text-white py-2 rounded-xl font-semibold inline-flex items-center justify-center gap-2">
+                        <button className="cursor-pointer flex-1 bg-black text-white py-2 rounded-xl font-semibold inline-flex items-center justify-center gap-2">
                             <span>Sign Up</span>
                             <svg
                                 className="w-4 h-4 fill-white"
