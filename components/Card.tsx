@@ -3,6 +3,20 @@ import { useState } from "react"
 import Image from "next/image"
 import Modal from "@/components/Modal"
 
+export type Currency = {
+  code: string
+  name: string
+  icon: string
+  network: string
+}
+
+export type Wallet = {
+  type: string
+  provider: string
+  icon: string
+  is_supported: boolean
+}
+
 export interface CardProps {
   name: string
   logo: string
@@ -12,9 +26,11 @@ export interface CardProps {
   highlight: string
   features: string[]
   link: string
+  currencies: Currency[]
+  wallet: Wallet
 }
 
-const Card = ({name, logo, headline, category, badges, highlight, features, link}: CardProps) => {
+const Card = ({name, logo, headline, category, badges, highlight, features, link, currencies, wallet}: CardProps) => {
     const [open, setOpen] = useState(false)
     const [modalData, setModalData] = useState<CardProps | null>(null);
 
@@ -81,7 +97,7 @@ const Card = ({name, logo, headline, category, badges, highlight, features, link
                 <div className="flex items-center gap-3 mt-6">
                     <button 
                         onClick={() => {
-                            setModalData({ name, logo, headline, category, badges, highlight, features, link });
+                            setModalData({ name, logo, headline, category, badges, highlight, features, link, currencies, wallet });
                             setOpen(true);
                         }} 
                         className="bg-neutral-100 px-5 py-2 rounded-lg text-sm font-medium flex items-center justify-center cursor-pointer"

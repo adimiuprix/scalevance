@@ -6,7 +6,7 @@ const Promo = () => {
         <>
             {/* TOP PROMO */}
             <section className="w-full bg-black">
-                <div className="max-w-360 mx-auto px-4 sm:px-8 lg:px-20 py-12 sm:py-16 lg:py-22">
+                <div className="max-w-360 mx-auto px-4 sm:px-8 lg:px-20 py-12 sm:py-16 lg:py-10">
                     <div className="
                         grid
                         grid-cols-1
@@ -22,7 +22,7 @@ const Promo = () => {
                             <img
                                 src="https://scalevance.com/wp-content/uploads/2025/12/Stake_300x250.gif"
                                 alt=""
-                                className="w-57.5 h-57.5 rounded-md"
+                                className="w-36 h-36 rounded-md"
                             />
                         </div>
 
@@ -39,7 +39,7 @@ const Promo = () => {
                             <span className="text-lime-400"> Free Crypto!</span>
                             </h1>
 
-                            <p className="text-white/70 text-[15px] leading-[1.7] max-w-190 mx-auto lg:mx-0">
+                            <p className="text-white/70 text-[15px] text-center leading-[1.7] max-w-190 mx-auto lg:mx-0">
                             Explore the best legit ways to earn free crypto and real money today:
                             claim faucets, watch ads, play games, share traffic and get paid!
                             Withdraw instantly to best crypto wallets!
@@ -50,7 +50,7 @@ const Promo = () => {
                             <img
                                 src="https://scalevance.com/wp-content/uploads/2024/03/Aff.-Banner_Chilli-Bang-Bang_300x250.gif"
                                 alt=""
-                                className="w-57.5 h-57.5 rounded-md"
+                                className="w-36 h-36 rounded-md"
                             />
                         </div>
 

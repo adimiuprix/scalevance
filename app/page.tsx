@@ -37,7 +37,7 @@ export default function Home() {
     const [cards, setCards] = useState<CardItem[]>([])
 
     useEffect(() => {
-        fetch('/api/cards')
+        fetch('/api/contents')
             .then(res => res.json())
             .then(json => {
                 if (json.status) {
