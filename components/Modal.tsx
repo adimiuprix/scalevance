@@ -10,7 +10,7 @@ type ModalProps = {
 const Modal = ({ open, data, onClose }: ModalProps) => {
     if (!open || !data) return null;
 
-    return(
+    return (
         <>
             {/* MODAL BACKDROP */}
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
@@ -28,15 +28,16 @@ const Modal = ({ open, data, onClose }: ModalProps) => {
                             </svg>
                             <span>TOP</span>
                         </span>
-            
+
                         <div className="flex items-center gap-3 mb-2">
                             <div className="w-12 h-12 rounded-xl bg-neutral-200">
                                 <Image
                                     className='w-12 h-12 rounded-xl'
-                                    src={data.logo} 
+                                    src={data.logo?.startsWith('http') ? data.logo : data.logo?.startsWith('/') ? data.logo : `/${data.logo}`}
                                     alt="Logo"
                                     width={48}
                                     height={48}
+                                    unoptimized={!data.logo?.startsWith('http') && !data.logo?.startsWith('/')}
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -44,7 +45,7 @@ const Modal = ({ open, data, onClose }: ModalProps) => {
                                 <p className="text-xs text-neutral-500">{data.category}</p>
                             </div>
                         </div>
-            
+
                         <p className="text-xs font-semibold mb-2">FREE CRYPTO - INSTANT WITHDRAW!</p>
                         <div className="inline-flex items-center gap-1.5 bg-lime-400/90 text-black text-xs font-semibold px-3 py-1.5 rounded-lg mb-3">
                             <svg
@@ -58,12 +59,12 @@ const Modal = ({ open, data, onClose }: ModalProps) => {
                         </div>
                         <ul className="text-sm space-y-1">
                             {data.features.map((feature, i) => (
-                            <li key={i} className='flex items-center gap-2'>
-                                <svg className="w-3 h-3 flex-none" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
-                                </svg>
-                                {feature}
-                            </li>
+                                <li key={i} className='flex items-center gap-2'>
+                                    <svg className="w-3 h-3 flex-none" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
+                                    </svg>
+                                    {feature}
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -73,11 +74,27 @@ const Modal = ({ open, data, onClose }: ModalProps) => {
                         <p className="text-xs font-bold mb-2">CURRENCIES & WALLET</p>
                         <div className="flex items-center gap-2">
 
-                            {data.currencies?.map(c => (
-                            <div key={c.code} className="w-6 h-6 rounded bg-gray-200 flex items-center justify-center">
-                                <Image src={c.icon} alt={c.name} width={24} height={24} />
-                            </div>
-                            )) || <span className="text-xs text-neutral-400">No currencies</span>}
+                            {data.currencies?.map((c, idx) => {
+                                let currency;
+                                try {
+                                    currency = typeof c === 'string' ? JSON.parse(c) : c;
+                                } catch {
+                                    return null;
+                                }
+                                if (!currency || !currency.code) return null;
+
+                                return (
+                                    <div key={`${currency.code}-${idx}`} className="w-6 h-6 rounded bg-gray-200 flex items-center justify-center">
+                                        <Image
+                                            src={currency.icon?.startsWith('http') ? currency.icon : currency.icon?.startsWith('/') ? currency.icon : `/${currency.icon}`}
+                                            alt={currency.name}
+                                            width={24}
+                                            height={24}
+                                            unoptimized={!currency.icon?.startsWith('http') && !currency.icon?.startsWith('/')}
+                                        />
+                                    </div>
+                                );
+                            }) || <span className="text-xs text-neutral-400">No currencies</span>}
 
                             <span className="ml-auto inline-flex items-center gap-1.5 text-xs bg-neutral-100 px-2 py-1 rounded">
                                 <svg className="w-3 h-3 fill-current" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M461.2 128H80c-8.84 0-16-7.16-16-16s7.16-16 16-16h384c8.84 0 16-7.16 16-16 0-26.51-21.49-48-48-48H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h397.2c28.02 0 50.8-21.53 50.8-48V176c0-26.47-22.78-48-50.8-48zM416 336c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"></path></svg>
@@ -101,7 +118,7 @@ const Modal = ({ open, data, onClose }: ModalProps) => {
                             </svg>
                             <span>Close</span>
                         </button>
-                        <button className="cursor-pointer flex-1 bg-black text-white py-2 rounded-xl font-semibold inline-flex items-center justify-center gap-2">
+                        <button onClick={() => window.open(data.link, "_blank")} className="cursor-pointer flex-1 bg-black text-white py-2 rounded-xl font-semibold inline-flex items-center justify-center gap-2">
                             <span>Sign Up</span>
                             <svg
                                 className="w-4 h-4 fill-white"

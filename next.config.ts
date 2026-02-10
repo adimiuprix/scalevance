@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: 's2.coinmarketcap.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'tascen.site',
+        pathname: '/**',
+      },
     ],
   },
 };
