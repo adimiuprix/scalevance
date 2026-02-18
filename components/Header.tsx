@@ -31,17 +31,6 @@ export default function Header() {
                         ">
                             TOP
                         </Link>
-                        <Link
-                            href={'/earn-crypto'}
-                            data-active={isActive("/earn-crypto")}
-                            className="
-                                hover:opacity-100
-                                data-[active=true]:text-lime-400
-                                data-[active=true]:opacity-100
-                            "
-                        >
-                            Earn Crypto
-                        </Link>
                     </nav>
 
                     {/* TOGGLE BUTTON (HAMBURGER / CLOSE) */}
