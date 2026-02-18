@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 type ApiError = {
   status: false
   message: string
