@@ -1,16 +1,18 @@
 export const runtime = 'edge';
 
 type ApiError = {
-  status: false
-  message: string
+    status: false
+    message: string
 }
 
 export async function GET(): Promise<Response> {
     try {
-        const res = await fetch('https://tascen.site/api/content', {
-            cache: 'no-cache',
-            // next: { revalidate: 60 },
-        })
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BACKEND_APP}/api/content`,
+            {
+                cache: 'no-store',
+            }
+        )
 
         if (!res.ok) {
             return Response.json(
@@ -22,8 +24,8 @@ export async function GET(): Promise<Response> {
         return Response.json(await res.json())
     } catch (e) {
         return Response.json(
-        { status: false, message: e instanceof Error ? e.message : 'Fetch error' },
-        { status: 500 }
+            { status: false, message: e instanceof Error ? e.message : 'Fetch error' },
+            { status: 500 }
         )
     }
 }
