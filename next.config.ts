@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
+const host = process.env.NEXT_PUBLIC_DOMAIN || "localhost";
+
+const protocols = ["http", "https"] as const;
+
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'tascen.site',
-        pathname: '/**',
-      },
-    ],
+    remotePatterns: protocols.map((protocol) => ({
+      protocol,
+      hostname: host,
+      pathname: "/**",
+    })),
   },
 };
 
