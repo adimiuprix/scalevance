@@ -49,12 +49,11 @@ export default function Home() {
     return (
         <>
             <Promo />
-
             {/* GRID */}
             <div className="max-w-7xl mx-auto px-6 py-5">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {cards
-                        .filter(card => ['Faucet & PTC', 'Offers & Surveys', 'PTC & Tasks', 'Watch & Earn'].includes(card.category))
+                        .filter(card => ['Mining', 'Hyip'].includes(card.category))
                         .slice(0, 8)
                         .map(card => (
                             <Card key={card.id} {...card} />
@@ -97,7 +96,6 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
-
             <CTASection
                 badgeText='Claim & Multiply'
                 title='Claim free faucet and multiply your reward.'
@@ -107,7 +105,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto px-6 py-5">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {cards
-                        .filter(card => ['Mining', 'Hyip'].includes(card.category))
+                        .filter(card => ['Faucet & PTC', 'Offers & Surveys', 'PTC & Tasks', 'Watch & Earn'].includes(card.category))
                         .slice(0, 8)
                         .map(card => (
                             <Card key={card.id} {...card} />
